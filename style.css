@@ -1,0 +1,312 @@
+/* =========================================================
+   Portfolio Styles – Dark/Light Theme Ready
+   Author: Sai Ramakrishna
+   ========================================================= */
+
+/* ===== Root Variables ===== */
+:root {
+  /* Light Theme */
+  --bg-color: #f8f9fc;
+  --text-color: #1e1e1e;
+  --secondary-text: #6C75F5;
+  --card-bg: #ffffff;
+  --navbar-bg: rgba(255, 255, 255, 0.9);
+  --link-hover: #0d6efd;
+  --btn-outline: #0d6efd;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --hero-overlay: rgba(0, 0, 0, 0.6);
+}
+
+body.dark-mode {
+  /* Dark Theme */
+  --bg-color: #0d1117;
+  --text-color: #e6edf3;
+  --secondary-text: #9da5b4;
+  --card-bg: #161b22;
+  --navbar-bg: rgba(13, 17, 23, 0.9);
+  --link-hover: #58a6ff;
+  --btn-outline: #58a6ff;
+  --shadow: rgba(255, 255, 255, 0.06);
+  --hero-overlay: rgba(0, 0, 0, 0.8);
+}
+
+/* ===== Global ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  background-color: var(--navbar-bg) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: background-color 0.4s ease, box-shadow 0.3s ease;
+}
+
+.navbar-brand {
+  color: var(--text-color) !important;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.navbar-nav .nav-link {
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--link-hover) !important;
+}
+
+.navbar-toggler {
+  border-color: var(--text-color);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+/* ===== Theme Toggle Button ===== */
+#theme-toggle {
+  border-width: 1.5px;
+  border-color: var(--btn-outline);
+  color: var(--btn-outline);
+  transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+  background-color: var(--btn-outline);
+  color: #fff;
+}
+
+.textHigh {
+  color: var(--link-hover);
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  height: 100vh;
+  background: linear-gradient(var(--hero-overlay), var(--hero-overlay)),
+              url('https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  color: var(--text-color);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.hero .profile-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border: 4px solid var(--card-bg);
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  animation: fadeUp 1s ease forwards;
+  opacity: 0;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--secondary-text);
+  animation: fadeUp 1.3s ease forwards;
+  opacity: 0;
+}
+
+.hero-btn {
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-top: 15px;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.4);
+}
+
+.scroll-down a {
+  animation: bounce 2s infinite;
+  color: var(--link-hover);
+}
+
+.modal-body{
+  height:auto;
+}
+
+/* ===== About Section ===== */
+#about {
+  background-color: var(--card-bg);
+  padding: 100px 0;
+  text-align: center;
+}
+
+#about h2 {
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.badge-item .badge-icon {
+  width: 70px;
+  height: 70px;
+  transition: transform 0.3s ease;
+}
+
+.badge-item .badge-icon:hover {
+  transform: scale(1.15);
+}
+
+.social-links a {
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: var(--link-hover);
+}
+
+/* ===== Skills Section ===== */
+#skills {
+  background-color: var(--bg-color);
+  padding: 80px 0;
+}
+
+.progress {
+  height: 22px;
+  border-radius: 12px;
+  background-color: #e9ecef;
+}
+
+.progress-bar {
+  border-radius: 12px;
+  font-weight: 600;
+  transition: width 1s ease-in-out;
+}
+
+/* ===== Projects Section ===== */
+#projects {
+  background-color: var(--card-bg);
+  padding: 80px 0;
+}
+
+.project-item {
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 250px !important;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ===== Certificates Section ===== */
+#certificates {
+  background-color: var(--bg-color);
+  padding: 80px 0;
+}
+
+#certificates img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#certificates img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content {
+  border-radius: 15px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* ===== Contact Section ===== */
+#contact {
+  background-color: var(--bg-color);
+  padding: 80px 0;
+  color: var(--text-color);
+}
+
+.contact-box {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px var(--shadow);
+}
+
+.form-control {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--btn-outline);
+}
+
+.form-control:focus {
+  border-color: var(--link-hover);
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.4);
+}
+
+.infoCard{
+    color: aquamarine;
+}
+
+/* ===== Footer ===== */
+footer {
+  font-size: 14px;
+  background-color: #000;
+  color: #bbb;
+  padding: 15px 0;
+  text-align: center;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .hero {
+    height: auto;
+    padding: 100px 20px 60px;
+  }
+
+  .hero-title { font-size: 2rem; }
+  .hero-subtitle { font-size: 1rem; }
+  .hero-btn { padding: 12px 25px; font-size: 0.9rem; }
+  .hero .profile-img { width: 120px; height: 120px; }
+  #skills h4 { text-align: center; }
+}
