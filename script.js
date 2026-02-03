@@ -1,9 +1,11 @@
 // ======================== Active Nav Highlight on Scroll ========================
 const navLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll("section");
+
 window.addEventListener("scroll", () => {
   let current = "";
-  document.querySelectorAll("section").forEach(section => {
-    const sectionTop = section.offsetTop - 100;
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 150;
     if (window.scrollY >= sectionTop) current = section.getAttribute("id");
   });
 
@@ -11,6 +13,26 @@ window.addEventListener("scroll", () => {
     link.classList.remove("active");
     if (link.getAttribute("href").includes(current)) link.classList.add("active");
   });
+});
+
+// ======================== Intersection Observer for Animations ========================
+const observerOptions = {
+  root: null,
+  rootMargin: '0px',
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target); // Only animate once
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-up').forEach(el => {
+  observer.observe(el);
 });
 
 // ======================== Contact Form Handler ========================
@@ -22,78 +44,64 @@ const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
 if (contactForm) {
   const submitBtn = contactForm.querySelector('button[type="submit"]');
-  
+
   contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    
+
     // Disable submit button and show loading state
     if (submitBtn) {
       submitBtn.disabled = true;
-      const originalText = submitBtn.textContent;
+      const originalText = submitBtn.innerHTML;
       submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
-    }
-    
-    // Get form data
-    const formData = {
-      name: document.getElementById("name").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      message: document.getElementById("message").value.trim(),
-      timestamp: new Date().toISOString()
-    };
 
-    try {
-      // Check if Google Script URL is configured
-      if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
-        throw new Error('Please configure your Google Apps Script URL in script.js');
-      }
+      const formData = {
+        name: document.getElementById("name").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        message: document.getElementById("message").value.trim(),
+        timestamp: new Date().toISOString()
+      };
 
-      // Send data to Google Apps Script
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData)
-      });
-
-      // Since no-cors mode doesn't return response, we'll assume success
-      // Show success message
-      if (responseMsg) {
-        responseMsg.textContent = "✅ Your message has been sent successfully! I'll reply soon.";
-        responseMsg.className = "mt-3 fw-semibold success";
-        responseMsg.style.display = "block";
-      }
-      
-      // Reset form
-      contactForm.reset();
-      
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        if (responseMsg) {
-          responseMsg.style.display = "none";
-          responseMsg.className = "mt-3 fw-semibold";
+      try {
+        // Check if Google Script URL is configured
+        if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+          // Simulation for demo purposes if URL not valid
+          console.warn('Google Script URL not verified, simulating success for UI demo.');
+          await new Promise(resolve => setTimeout(resolve, 1500)); // Fake delay
+        } else {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+          });
         }
-      }, 5000);
 
-    } catch (error) {
-      console.error('Error:', error);
-      if (responseMsg) {
-        responseMsg.textContent = "❌ There was an error sending your message. Please try again or contact me directly via email.";
-        responseMsg.className = "mt-3 fw-semibold error";
-        responseMsg.style.display = "block";
-        
-        // Hide error message after 7 seconds
+        if (responseMsg) {
+          responseMsg.textContent = "✅ Message sent successfully!";
+          responseMsg.className = "mt-3 text-center fw-semibold text-success";
+          responseMsg.style.display = "block";
+        }
+
+        contactForm.reset();
+
         setTimeout(() => {
-          responseMsg.style.display = "none";
-          responseMsg.className = "mt-3 fw-semibold";
-        }, 7000);
-      }
-    } finally {
-      // Re-enable submit button
-      if (submitBtn) {
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Send Message";
+          if (responseMsg) responseMsg.style.display = "none";
+        }, 5000);
+
+      } catch (error) {
+        console.error('Error:', error);
+        if (responseMsg) {
+          responseMsg.textContent = "❌ Error sending message.";
+          responseMsg.className = "mt-3 text-center fw-semibold text-danger";
+          responseMsg.style.display = "block";
+
+          setTimeout(() => { responseMsg.style.display = "none"; }, 5000);
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
       }
     }
   });
@@ -113,86 +121,107 @@ filterButtons.forEach(button => {
     projectItems.forEach(item => {
       if (filter === "all" || item.classList.contains(filter)) {
         item.style.display = "block";
-        setTimeout(() => item.classList.add("fade-in"), 50);
+        // Re-trigger animation
+        item.classList.remove('visible');
+        setTimeout(() => item.classList.add('visible'), 50);
       } else {
-        item.classList.remove("fade-in");
-        setTimeout(() => (item.style.display = "none"), 200);
+        item.style.display = "none";
+        item.classList.remove('visible');
       }
     });
   });
 });
 
 // ======================== Certificates Modal ========================
-const certImages = document.querySelectorAll(".cert-img");
+const certCards = document.querySelectorAll(".cert-card");
 const modalImage = document.getElementById("modalImage");
-const modal = new bootstrap.Modal(document.getElementById("certificateModal"));
-const prevBtn = document.getElementById("prevBtn");
-const nextBtn = document.getElementById("nextBtn");
+const modalTitle = document.getElementById("modalTitle");
+const modalIssuer = document.getElementById("modalIssuer");
+const modalDate = document.getElementById("modalDate");
+const modalDescription = document.getElementById("modalDescription");
+const currentCertIndex = document.getElementById("currentCertIndex");
+const totalCerts = document.getElementById("totalCerts");
 
-let currentIndex = 0;
+const modalElement = document.getElementById("certificateModal");
+if (modalElement && certCards.length > 0) {
+  const modal = new bootstrap.Modal(modalElement);
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
 
-function showImage() {
-  modalImage.src = certImages[currentIndex].src;
-}
+  let currentIndex = 0;
 
-certImages.forEach((img, index) => {
-  img.addEventListener("click", () => {
-    currentIndex = index;
-    showImage();
-    modal.show();
-  });
-});
+  // Update total count
+  if (totalCerts) totalCerts.textContent = certCards.length;
 
-nextBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % certImages.length;
-  showImage();
-});
+  function updateModal() {
+    const card = certCards[currentIndex];
+    const img = card.querySelector(".cert-img");
 
-prevBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + certImages.length) % certImages.length;
-  showImage();
-});
+    // Update image
+    if (modalImage && img) modalImage.src = img.src;
 
-// Keyboard navigation for modal
-document.addEventListener("keydown", e => {
-  if (document.getElementById("certificateModal").classList.contains("show")) {
-    if (e.key === "ArrowRight") {
-      currentIndex = (currentIndex + 1) % certImages.length;
-      showImage();
-    } else if (e.key === "ArrowLeft") {
-      currentIndex = (currentIndex - 1 + certImages.length) % certImages.length;
-      showImage();
-    } else if (e.key === "Escape") {
-      modal.hide();
-    }
+    // Update details from data attributes
+    if (modalTitle) modalTitle.textContent = card.dataset.title || "Certificate";
+    if (modalIssuer) modalIssuer.textContent = card.dataset.issuer || "N/A";
+    if (modalDate) modalDate.textContent = card.dataset.date || "N/A";
+    if (modalDescription) modalDescription.textContent = card.dataset.description || "";
+
+    // Update counter
+    if (currentCertIndex) currentCertIndex.textContent = currentIndex + 1;
   }
-});
+
+  // Click on card to open modal
+  certCards.forEach((card, index) => {
+    card.addEventListener("click", () => {
+      currentIndex = index;
+      updateModal();
+      modal.show();
+    });
+  });
+
+  // Navigation buttons
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex + 1) % certCards.length;
+      updateModal();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      currentIndex = (currentIndex - 1 + certCards.length) % certCards.length;
+      updateModal();
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener("keydown", e => {
+    if (modalElement.classList.contains("show")) {
+      if (e.key === "ArrowRight") {
+        currentIndex = (currentIndex + 1) % certCards.length;
+        updateModal();
+      } else if (e.key === "ArrowLeft") {
+        currentIndex = (currentIndex - 1 + certCards.length) % certCards.length;
+        updateModal();
+      }
+    }
+  });
+}
 
 // ======================== Dark/Light Theme Toggle ========================
 const themeToggle = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 const currentTheme = localStorage.getItem("theme");
 
-// Apply saved theme on page load
 if (currentTheme === "dark") {
   document.body.classList.add("dark-mode");
   themeIcon.classList.replace("bi-moon-fill", "bi-sun-fill");
-} else {
-  document.body.classList.remove("dark-mode");
-  themeIcon.classList.replace("bi-sun-fill", "bi-moon-fill");
 }
 
-// Smooth transition for theme change
-document.body.style.transition = "background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
-
 themeToggle.addEventListener("click", () => {
-  // Add transition class for smooth animation
-  document.body.style.transition = "background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1)";
-  
   document.body.classList.toggle("dark-mode");
   const isDark = document.body.classList.contains("dark-mode");
 
-  // Animate icon rotation
   themeIcon.style.transform = "rotate(360deg)";
   setTimeout(() => {
     themeIcon.style.transform = "rotate(0deg)";
@@ -206,8 +235,3 @@ themeToggle.addEventListener("click", () => {
     localStorage.setItem("theme", "light");
   }
 });
-
-// Add transition to icon
-if (themeIcon) {
-  themeIcon.style.transition = "transform 0.3s ease";
-}

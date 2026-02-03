@@ -1,457 +1,621 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sai Ramakrishna | Software Engineer</title>
+
+  <!-- CSS Frameworks -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- Animations (AOS replacement - custom lightweight) -->
+  <style>
+    /* Preloader to prevent FOUC (Flash of Unstyled Content) if needed */
+    body {
+      visibility: hidden;
+    }
+  </style>
+  <script>
+    // FOUC prevention
+    document.addEventListener("DOMContentLoaded", () => document.body.style.visibility = "visible");
+  </script>
 </head>
-<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="80">
 
-<!-- ===== Navbar ===== -->
-<nav id="navbar" class="navbar navbar-expand-lg fixed-top shadow-sm">
-  <div class="container d-flex align-items-center justify-content-between">
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
 
-    <!-- Brand -->
-    <a class="navbar-brand fw-bold" href="#">
-      Sai<span class="text-info">Ramakrishna</span>
-    </a>
+  <!-- ===== Navbar (Glassmorphism Pill) ===== -->
+  <nav id="navbar" class="navbar navbar-expand-lg glass-nav">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
 
-    <div class="d-flex align-items-center">
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">
+        Sai<span class="text-gradient">Ramakrishna</span>
+      </a>
 
-      <!-- Theme Toggle Button -->
-      <button id="theme-toggle" class="btn btn-outline-info me-2 rounded-circle" aria-label="Toggle theme">
-        <i class="bi bi-moon-fill" id="theme-icon"></i>
-      </button>
+      <div class="d-flex align-items-center gap-3">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" aria-label="Toggle theme">
+          <i class="bi bi-moon-fill" id="theme-icon"></i>
+        </button>
 
-      <!-- Navbar Toggle -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-
-    <!-- Collapsible Menu -->
-    <div class="collapse navbar-collapse justify-content-end" id="navMenu">
-      <ul class="navbar-nav text-center">
-        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-
-  </div>
-</nav>
-
-<!-- ===== Hero Section ===== -->
-<section id="home" class="hero my-5 d-flex align-items-center justify-content-center text-center text-white position-relative">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="content">
-      <img src="images/image1.jpg" class="profile-img rounded-circle shadow-lg border border-3 border-white mb-4" alt="Sai Ramakrishna Profile Photo">
-
-      <h1 class="fw-bold hero-title">Hi, I'm <span class="text-info">Sai Ramakrishna</span></h1>
-      <h4 class="fw-light hero-subtitle mb-3">Software Engineer | Aspiring Java Full Stack Developer</h4>
-
-      <a href="#projects" class="btn btn-info text-white px-5 py-3 rounded-pill hero-btn">View My Work</a>
-
-      <div class="scroll-down mt-5">
-        <a href="#about" class="text-white fs-2" aria-label="Scroll down to About section"><i class="bi bi-chevron-down"></i></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== About Section ===== -->
-<section id="about" class="py-5">
-  <div class="container my-3 py-3">
-    <div class="row align-items-center">
-      <!-- Left Column: Text -->
-      <div class="col-lg-7">
-        <h2 class="fw-bold mb-3">Hello, I am Sai Ramakrishna</h2>
-        <h5 class="fw-semibold mb-3">Software Engineer at ABC Technologies</h5>
-        <p class="text-muted">
-          Welcome to my portfolio! I am a passionate Software Engineer with 2 years of experience in building scalable, responsive web applications using Java, Spring Boot, HTML, CSS, and Bootstrap. I enjoy transforming complex business requirements into clean, user-friendly digital solutions.
-        </p>
-        <p class="text-muted">
-          Explore my projects, certifications, and skills that highlight my commitment to learning, problem-solving, and delivering high-quality applications. I’m always eager to collaborate and create something remarkable.
-        </p>
-
-        <!-- Social Links -->
-        <div class="social-links mb-4">
-          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
-          <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-        </div>
-
-        <!-- Resume Button -->
-        <a href="Pakala_Venkata_Sai_Ramakrishna_Resume.pdf" class="btn px-4 py-2 rounded-pill" target="_blank">My Resume</a>
+        <!-- Navbar Toggler -->
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+          aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="bi bi-list fs-1 text-primary"></i>
+        </button>
       </div>
 
-      <!-- Right Column: Stats & Badges -->
-      <div class="col-lg-5 text-center mt-5 mt-lg-0">
-        <div class="stats-box mb-4 ">
-          <h2 class="fw-bold mb-0">4</h2>
-          <p class="mb-0">Projects Completed</p>
+      <!-- Collapsible Menu -->
+      <div class="collapse navbar-collapse justify-content-end" id="navMenu">
+        <ul class="navbar-nav text-center mt-3 mt-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certificates">Certificates</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero Section ===== -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="row align-items-center flex-column-reverse flex-lg-row">
+
+        <!-- Text Content -->
+        <div class="col-lg-7 hero-content pt-5 pt-lg-0 text-center text-lg-start">
+          <h4 class="text-gradient fw-bold mb-3 fade-up stagger-1">Hello, I'm</h4>
+          <h1 class="hero-title fade-up stagger-2">Sai Ramakrishna</h1>
+          <h3 class="hero-subtitle fade-up stagger-3">
+            I build scalable, responsive web applications using <span class="text-gradient fw-bold">Java Spring
+              Boot</span> & Modern Frontend.
+          </h3>
+
+          <div class="d-flex gap-3 justify-content-center justify-content-lg-start fade-up stagger-3">
+            <a href="#projects" class="hero-btn">
+              View Work <i class="bi bi-arrow-right-short fs-4"></i>
+            </a>
+            <a href="#contact"
+              class="btn btn-outline-dark rounded-pill px-4 py-3 fw-bold d-flex align-items-center gap-2"
+              style="border-width: 2px;">
+              Contact Me
+            </a>
+          </div>
         </div>
 
-        <div class="mt-4">
-          <h6 class="fw-semibold mb-3"><i class="bi bi-award me-2"></i>Technical Skills</h6>
-          <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
-            <div class="badge-item text-center">
-              <img src="https://img.icons8.com/color/96/000000/java-coffee-cup-logo.png" class="badge-icon" alt="Core Java Badge">
-              <p class="small mt-2 mb-0">Core Java</p>
+        <!-- Hero Image -->
+        <div class="col-lg-5 text-center fade-up">
+          <div class="profile-container">
+            <img src="images/image1.jpg" class="profile-img" alt="Sai Ramakrishna Profile">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== About Section ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <!-- Left: Stats Grid -->
+        <div class="col-lg-5 fade-up">
+          <div class="row g-4">
+            <div class="col-6">
+              <div class="stat-card">
+                <span class="stat-number">2+</span>
+                <p class="mb-0 text-muted fw-bold">Years Exp.</p>
+              </div>
             </div>
-            <div class="badge-item text-center">
-              <img src="https://img.icons8.com/fluency/96/mysql-logo.png" class="badge-icon" alt="MySQL Badge">
-              <p class="small mt-2 mb-0">MySQL</p>
+            <div class="col-6">
+              <div class="stat-card">
+                <span class="stat-number">4+</span>
+                <p class="mb-0 text-muted fw-bold">Projects</p>
+              </div>
             </div>
-            <div class="badge-item text-center">
-              <img src="https://img.icons8.com/color/96/000000/data-configuration.png" class="badge-icon" alt="JDBC Badge">
-              <p class="small mt-2 mb-0">JDBC</p>
-            </div>
-            <div class="badge-item text-center">
-              <img src="images/image6.png" class="badge-icon" alt="Hibernate Badge">
-              <p class="small mt-2 mb-0">Hibernate</p>
-            </div>
-            <div class="badge-item text-center">
-              <img src="https://img.icons8.com/color/96/000000/spring-logo.png" class="badge-icon" alt="Spring Boot Badge">
-              <p class="small mt-2 mb-0">Spring Boot</p>
+            <div class="col-12">
+              <div class="stat-card d-flex align-items-center justify-content-center gap-4 text-start">
+                <div class="display-4 text-primary"><i class="bi bi-code-slash"></i></div>
+                <div>
+                  <h5 class="fw-bold mb-1">Full Stack Dev</h5>
+                  <p class="mb-0 text-muted small">Java, Spring Boot, React</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- Right: Text -->
+        <div class="col-lg-7 fade-up stagger-1">
+          <h6 class="text-gradient fw-bold text-uppercase mb-2">About Me</h6>
+          <h2 class="fw-bold mb-4">Crafting Digital Experiences with Code</h2>
+          <p class="about-text mb-4">
+            I am a passionate Software Engineer at ABC Technologies with experience in building
+            scalable web applications. My expertise lies in <span class="text-primary fw-semibold">Java Backend
+              Development</span>
+            and creating intuitive user interfaces. I love solving complex problems and turning ideas into reality.
+          </p>
+
+          <div class="d-flex gap-4 mb-5">
+            <a href="#" class="text-dark fs-4 hover-gradient"><i class="bi bi-github"></i></a>
+            <a href="#" class="text-primary fs-4 hover-gradient"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-danger fs-4 hover-gradient"><i class="bi bi-instagram"></i></a>
+          </div>
+
+          <a href="Pakala_Venkata_Sai_Ramakrishna_Resume.pdf" target="_blank"
+            class="btn btn-dark rounded-pill px-4 py-2 fw-semibold">
+            <i class="bi bi-file-earmark-person me-2"></i> Download Resume
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Skills Section ===== -->
+  <section id="skills" class="bg-light-subtle">
+    <div class="container">
+      <h2 class="section-title fade-up">My Skills</h2>
+
+      <div class="row g-4">
+
+        <!-- Backend Card -->
+        <div class="col-md-6 col-lg-3 fade-up stagger-1">
+          <div class="skill-card bg-white border">
+            <div class="skill-icon-box">
+              <i class="bi bi-hdd-rack"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Backend</h5>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>Java Core</span>
+                <span>92%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar-custom" style="width: 92%"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>Spring Boot</span>
+                <span>88%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar-custom" style="width: 88%"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>MySQL / JDBC</span>
+                <span>85%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar-custom" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frontend Card -->
+        <div class="col-md-6 col-lg-3 fade-up stagger-2">
+          <div class="skill-card bg-white border">
+            <div class="skill-icon-box">
+              <i class="bi bi-window-fullscreen"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Frontend</h5>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>HTML5 / CSS3</span>
+                <span>95%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar-custom" style="width: 95%"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>JavaScript</span>
+                <span>85%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar-custom" style="width: 85%"></div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="d-flex justify-content-between small fw-bold mb-1">
+                <span>React Basics</span>
+                <span>75%</span>
+              </div>
+              <div class="progress-container">
+                <div class="progress-bar-custom" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tools Card -->
+        <div class="col-md-6 col-lg-3 fade-up stagger-3">
+          <div class="skill-card bg-white border">
+            <div class="skill-icon-box">
+              <i class="bi bi-tools"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Tools</h5>
+            <ul class="text-secondary small ps-3">
+              <li class="mb-2">Git & GitHub</li>
+              <li class="mb-2">Postman API Testing</li>
+              <li class="mb-2">Docker (Basics)</li>
+              <li class="mb-2">VS Code / IntelliJ</li>
+              <li class="mb-2">Maven / Gradle</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Soft Skills Card -->
+        <div class="col-md-6 col-lg-3 fade-up stagger-3">
+          <div class="skill-card bg-white border">
+            <div class="skill-icon-box">
+              <i class="bi bi-people"></i>
+            </div>
+            <h5 class="fw-bold mb-3">Soft Skills</h5>
+            <ul class="text-secondary small ps-3">
+              <li class="mb-2">Problem Solving</li>
+              <li class="mb-2">Team Collaboration</li>
+              <li class="mb-2">Agile Methodology</li>
+              <li class="mb-2">Effective Communication</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Projects Section ===== -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title fade-up">Featured Projects</h2>
+
+      <!-- Filter Buttons -->
+      <div class="d-flex justify-content-center gap-2 mb-5 fade-up stagger-1">
+        <button class="btn rounded-pill px-4 py-2 border fw-semibold filter-btn active" data-filter="all">All</button>
+        <button class="btn rounded-pill px-4 py-2 border fw-semibold filter-btn" data-filter="backend">Backend</button>
+        <button class="btn rounded-pill px-4 py-2 border fw-semibold filter-btn" data-filter="website">Websites</button>
+      </div>
+
+      <div class="row g-4" id="project-list">
+
+        <!-- Project 1 -->
+        <div class="col-md-6 col-lg-4 project-item backend fade-up">
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <img src="images/image1.jpg" class="project-img" alt="ToDo List">
+              <div class="project-overlay">
+                <a href="https://github.com/sramakrishna3/ToDoList" target="_blank"
+                  class="btn btn-light rounded-circle p-3">
+                  <i class="bi bi-github fs-5"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="mb-2">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">MySQL</span>
+              </div>
+              <h5 class="fw-bold">ToDo List App</h5>
+              <p class="text-muted small">Efficient task management system with CRUD operations and user authentication.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="col-md-6 col-lg-4 project-item backend fade-up stagger-1">
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <img src="images/image3.jpg" class="project-img" alt="Loan Management">
+              <div class="project-overlay">
+                <a href="https://github.com/sramakrishna3/loan-management-system" target="_blank"
+                  class="btn btn-light rounded-circle p-3">
+                  <i class="bi bi-github fs-5"></i>
+                </a>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="mb-2">
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">Hibernate</span>
+              </div>
+              <h5 class="fw-bold">Loan Management System</h5>
+              <p class="text-muted small">Comprehensive system for managing loans, customers, and repayment schedules.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="col-md-6 col-lg-4 project-item website fade-up stagger-2">
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <img src="images/image2.jpg" class="project-img" alt="E-Commerce">
+              <div class="project-overlay">
+                <a href="https://sramakrishna3.github.io/E-commerce/" target="_blank"
+                  class="btn btn-light rounded-circle p-3 mx-1"><i class="bi bi-link-45deg fs-5"></i></a>
+                <a href="https://github.com/sramakrishna3/E-commerce" target="_blank"
+                  class="btn btn-light rounded-circle p-3 mx-1"><i class="bi bi-github fs-5"></i></a>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="mb-2">
+                <span class="tech-tag">HTML/CSS</span>
+                <span class="tech-tag">Bootstrap</span>
+              </div>
+              <h5 class="fw-bold">Basic E-Commerce UI</h5>
+              <p class="text-muted small">Responsive frontend design for an online store with product grids and cart UI.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="col-md-6 col-lg-4 project-item website fade-up stagger-3">
+          <div class="project-card">
+            <div class="project-img-wrapper">
+              <img src="images/image5.jpg" class="project-img" alt="Sree Ganesh Youth">
+              <div class="project-overlay">
+                <a href="https://ganeshyouth.netlify.app/" target="_blank"
+                  class="btn btn-light rounded-circle p-3 mx-1"><i class="bi bi-link-45deg fs-5"></i></a>
+                <a href="https://github.com/sramakrishna3/Ganeshyouth" target="_blank"
+                  class="btn btn-light rounded-circle p-3 mx-1"><i class="bi bi-github fs-5"></i></a>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="mb-2">
+                <span class="tech-tag">HTML</span>
+                <span class="tech-tag">Bootstrap</span>
+              </div>
+              <h5 class="fw-bold">Community Website</h5>
+              <p class="text-muted small">A vibrant website for a local youth community organization.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Certificates Section ===== -->
+  <section id="certificates" class="bg-light-subtle">
+    <div class="container">
+      <h2 class="section-title fade-up">Certifications</h2>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Cert 1 -->
+        <div class="col-md-6 col-lg-4 fade-up">
+          <div class="cert-card" data-title="Java Full Stack Developer" data-issuer="Naresh IT" data-date="January 2024"
+            data-description="Comprehensive training covering Core Java, Spring Boot, Hibernate, REST APIs, and frontend technologies.">
+            <img src="images/java full stack.jpg" class="cert-img" alt="Java Full Stack">
+            <div class="cert-overlay">
+              <i class="bi bi-eye cert-icon"></i>
+              <h5 class="cert-title">Java Full Stack</h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 2 -->
+        <div class="col-md-6 col-lg-4 fade-up stagger-1">
+          <div class="cert-card" data-title="Web Development" data-issuer="Udemy" data-date="March 2023"
+            data-description="Mastered HTML5, CSS3, JavaScript, and responsive web design principles.">
+            <img src="images/cert 3.png" class="cert-img" alt="Web Development">
+            <div class="cert-overlay">
+              <i class="bi bi-eye cert-icon"></i>
+              <h5 class="cert-title">Web Development</h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 3 -->
+        <div class="col-md-6 col-lg-4 fade-up stagger-2">
+          <div class="cert-card" data-title="Core Java Programming" data-issuer="Oracle" data-date="December 2022"
+            data-description="Fundamental Java programming including OOP concepts, collections, and exception handling.">
+            <img src="images/java.jpg" class="cert-img" alt="Java Core">
+            <div class="cert-overlay">
+              <i class="bi bi-eye cert-icon"></i>
+              <h5 class="cert-title">Java Core</h5>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cert 4 -->
+        <div class="col-md-6 col-lg-4 fade-up stagger-3">
+          <div class="cert-card" data-title="Database Management with MySQL" data-issuer="Coursera"
+            data-date="August 2023"
+            data-description="Learned relational database concepts, SQL queries, normalization, and database design.">
+            <img src="images/cert 4.png" class="cert-img" alt="Database Management">
+            <div class="cert-overlay">
+              <i class="bi bi-eye cert-icon"></i>
+              <h5 class="cert-title">Database Management</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhanced Modal with Details -->
+    <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content cert-modal-content">
+          <button type="button" class="btn-close position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+
+          <div class="row g-0">
+            <!-- Left: Image -->
+            <div class="col-lg-7 cert-modal-image-wrapper">
+              <button class="cert-nav-btn prev" id="prevBtn" aria-label="Previous">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+              <img id="modalImage" src="" class="cert-modal-img" alt="Certificate">
+              <button class="cert-nav-btn next" id="nextBtn" aria-label="Next">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </div>
+
+            <!-- Right: Details -->
+            <div class="col-lg-5 cert-modal-details">
+              <div class="cert-modal-badge">
+                <i class="bi bi-patch-check-fill"></i> Verified Certificate
+              </div>
+              <h3 id="modalTitle" class="cert-modal-title"></h3>
+
+              <div class="cert-meta">
+                <div class="cert-meta-item">
+                  <i class="bi bi-building"></i>
+                  <div>
+                    <span class="cert-meta-label">Issued By</span>
+                    <span id="modalIssuer" class="cert-meta-value"></span>
+                  </div>
+                </div>
+                <div class="cert-meta-item">
+                  <i class="bi bi-calendar3"></i>
+                  <div>
+                    <span class="cert-meta-label">Date</span>
+                    <span id="modalDate" class="cert-meta-value"></span>
+                  </div>
+                </div>
+              </div>
+
+              <p id="modalDescription" class="cert-modal-desc"></p>
+
+              <div class="cert-modal-counter">
+                <span id="currentCertIndex">1</span> / <span id="totalCerts">4</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== Contact Section ===== -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title fade-up">Get in Touch</h2>
+
+      <div class="contact-wrapper fade-up">
+        <div class="row g-0">
+
+          <!-- Contact Info (Left Panel) -->
+          <div class="col-lg-5">
+            <div class="contact-info-panel">
+              <div>
+                <h3 class="mb-4">Let's discuss on<br>something <span class="text-white-50">cool</span> together</h3>
+
+                <div class="contact-detail-item">
+                  <div class="contact-detail-icon"><i class="bi bi-envelope-fill"></i></div>
+                  <div>
+                    <h6 class="fw-bold mb-1 border-bottom border-light pb-1 d-inline-block">Email</h6>
+                    <p class="mb-0 text-white-50 small">sairamakrishna@example.com</p>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="contact-detail-icon"><i class="bi bi-geo-alt-fill"></i></div>
+                  <div>
+                    <h6 class="fw-bold mb-1 border-bottom border-light pb-1 d-inline-block">Location</h6>
+                    <p class="mb-0 text-white-50 small">Hyderabad, India</p>
+                  </div>
+                </div>
+
+                <div class="contact-detail-item">
+                  <div class="contact-detail-icon"><i class="bi bi-telephone-fill"></i></div>
+                  <div>
+                    <h6 class="fw-bold mb-1 border-bottom border-light pb-1 d-inline-block">Phone</h6>
+                    <p class="mb-0 text-white-50 small">+91 630133999</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5">
+                <p class="small text-white-50 mb-3">Find me on social networks:</p>
+                <div class="d-flex gap-3">
+                  <a href="#" class="text-white fs-5"><i class="bi bi-github"></i></a>
+                  <a href="#" class="text-white fs-5"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form (Right Panel) -->
+          <div class="col-lg-7">
+            <div class="contact-form-panel h-100 d-flex flex-column justify-content-center">
+              <h4 class="fw-bold mb-4 text-gradient">Send a Message</h4>
+
+              <form id="contactForm" action="https://formspree.io/f/abcdxyzp" method="POST">
+                <div class="row g-2">
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <input type="text" name="name" id="name" class="form-input" placeholder=" " required>
+                      <label for="name" class="form-label">Your Name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating-custom">
+                      <input type="email" name="email" id="email" class="form-input" placeholder=" " required>
+                      <label for="email" class="form-label">Your Email</label>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-floating-custom">
+                      <textarea name="message" id="message" rows="4" class="form-input" placeholder=" " required
+                        style="resize: none;"></textarea>
+                      <label for="message" class="form-label">Your Message</label>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-3">
+                    <button type="submit" class="hero-btn w-100 justify-content-center">
+                      Send Message <i class="bi bi-send-fill ms-2 small"></i>
+                    </button>
+                  </div>
+                </div>
+                <p id="response" class="mt-3 text-center fw-semibold"></p>
+              </form>
+            </div>
+          </div>
+
+        </div>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== Skills Section ===== -->
-<section id="skills" class="py-5">
-  <div class="container my-3 py-3">
-    <h2 class="section-title fw-bold text-center mb-5">My Skills</h2>
-
-    <div class="row g-5">
-
-      <!-- Programming -->
-      <div class="col-md-6">
-        <h4 class="fw-semibold mb-3">
-          <i class="bi bi-code-slash me-2"></i>Programming
-        </h4>
-
-        <div class="skill-item">
-          <p>Core Java</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:92%">92%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>JDBC</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:85%">85%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>OOP Concepts</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:88%">88%</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Frameworks -->
-      <div class="col-md-6">
-        <h4 class="fw-semibold mb-3">
-          <i class="bi bi-layers me-2"></i>Frameworks
-        </h4>
-
-        <div class="skill-item">
-          <p>Spring Framework</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:86%">86%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>Spring Boot</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:88%">88%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>REST API Development</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:84%">84%</div>
-          </div>
-        </div>
-      </div>
+  <!-- ===== Footer ===== -->
+  <footer class="py-4 text-center text-muted border-top border-light">
+    <div class="container">
+      <p class="small mb-0">© 2026 Sai Ramakrishna. Built with <i class="bi bi-heart-fill text-danger mx-1"></i> & Java.
+      </p>
     </div>
+  </footer>
 
-    <div class="row g-5 mt-4">
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 
-      <!-- Frontend -->
-      <div class="col-md-6">
-        <h4 class="fw-semibold mb-3">
-          <i class="bi bi-window me-2"></i>Frontend
-        </h4>
-
-        <div class="skill-item">
-          <p>HTML5</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:95%">95%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>CSS3 / Bootstrap</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:90%">90%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>JavaScript</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:85%">85%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>React Basics</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:75%">75%</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Database & Tools -->
-      <div class="col-md-6">
-        <h4 class="fw-semibold mb-3">
-          <i class="bi bi-database me-2"></i>Database & Tools
-        </h4>
-
-        <div class="skill-item">
-          <p>MySQL</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:82%">82%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>Git / GitHub</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:80%">80%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>Postman</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:78%">78%</div>
-          </div>
-        </div>
-
-        <div class="skill-item">
-          <p>Docker Basics</p>
-          <div class="progress">
-            <div class="progress-bar" style="width:70%">70%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ===== Projects Section ===== -->
-<section id="projects" class="py-5">
-  <div class="container my-3 py-3 text-center">
-    <h2 class="section-title fw-bold">Projects</h2>
-
-    <!-- Filter Buttons -->
-    <div class="mb-5 d-flex flex-wrap justify-content-center">
-      <button class="btn active filter-btn" data-filter="all">All Projects</button>
-      <button class="btn filter-btn" data-filter="website">Website Projects</button>
-      <button class="btn filter-btn" data-filter="backend">Backend Projects</button>
-    </div>
-
-    <!-- Project Cards -->
-    <div class="row g-4" id="project-list">
-
-      <!-- Backend Project 1 -->
-      <div class="col-md-4 project-item backend">
-        <div class="card h-100 shadow-sm">
-          <img src="images/image1.jpg" class="card-img-top" alt="ToDo List Project Screenshot">
-          <div class="card-body">
-            <h5 class="fw-bold">ToDo List</h5>
-            <p>Task management application built with **Java Spring Boot**, and integrated with **MySQL** for organizing and tracking daily activities.</p>
-            <a href="https://github.com/sramakrishna3/ToDoList" target="_blank" class="btn btn-outline-info">View</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Backend Project 2 -->
-      <div class="col-md-4 project-item backend">
-        <div class="card h-100 shadow-sm">
-          <img src="images/image3.jpg" class="card-img-top" alt="Loan Management System Project Screenshot">
-          <div class="card-body">
-            <h5 class="fw-bold">Loan Management System</h5>
-            <p>Full-stack application developed using **Java Spring Boot** and integrated with **MySQL** for efficient data management.</p>
-            <a href="https://github.com/sramakrishna3/loan-management-system" target="_blank" class="btn btn-outline-info">View</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Website Project 1 -->
-      <div class="col-md-4 project-item website">
-        <div class="card h-100 shadow-sm">
-          <img src="images/image2.jpg" class="card-img-top" alt="Basic E-Commerce Project Screenshot">
-          <div class="card-body">
-            <h5 class="fw-bold">Basic E-Commerce</h5>
-            <p>Responsive web applications built with **HTML**, **Bootstrap**, and **JavaScript**, featuring modern UI design and seamless user experience.</p>
-            <a href="https://sramakrishna3.github.io/E-commerce/" target="_blank" class="btn btn-outline-info">Live Demo</a>
-            <a href="https://github.com/sramakrishna3/E-commerce" target="_blank" class="btn btn-outline-secondary ms-2">Source Code</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Website Project 2 -->
-      <div class="col-md-4 project-item website">
-        <div class="card h-100 shadow-sm">
-          <img src="images/image5.jpg" class="card-img-top" alt="Sree Ganesh Youth Website Screenshot">
-          <div class="card-body">
-            <h5 class="fw-bold">Sree Ganesh Youth Website</h5>
-            <p>Responsive web application built with **HTML** and **Bootstrap**, celebrating community engagement and cultural events.</p>
-            <a href="https://ganeshyouth.netlify.app/" target="_blank" class="btn btn-outline-info">Live Demo</a>
-            <a href="https://github.com/sramakrishna3/Ganeshyouth" target="_blank" class="btn btn-outline-secondary ms-2">Source Code</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ===== Certificates Section ===== -->
-<section id="certificates" class="py-5">
-  <div class="container text-center my-3 py-3 ">
-    <h2 class="section-title fw-bold">Certificates</h2>
-
-    <div class="row g-4 justify-content-center">
-      <!-- Certificate Images -->
-      <div class="col-md-4 col-sm-6">
-        <img src="images/java full stack.jpg" class="img-fluid rounded shadow-sm cert-img" alt="Certificate 1" data-index="0">
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <img src="images/java.jpg" class="img-fluid rounded shadow-sm cert-img" alt="Certificate 3" data-index="2">
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <img src="images/cert 3.png" class="img-fluid rounded shadow-sm cert-img" alt="Certificate 2" data-index="1">
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <img src="images/cert 4.png" class="img-fluid rounded shadow-sm cert-img" alt="Certificate 4" data-index="3">
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Popup for Certificates -->
-  <div class="modal fade" id="certificateModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
-      <div class="modal-content position-relative">
-        <button type="button" class="btn-close position-absolute top-0 end-0 m-3" data-bs-dismiss="modal" aria-label="Close" style="z-index: 10;"></button>
-        <div class="modal-body text-center">
-          <img id="modalImage" src="" class="img-fluid rounded" alt="Certificate">
-        </div>
-        <button class="btn position-absolute top-50 start-0 translate-middle-y" id="prevBtn" aria-label="Previous Certificate">❮</button>
-        <button class="btn position-absolute top-50 end-0 translate-middle-y" id="nextBtn" aria-label="Next Certificate">❯</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Contact Section ===== -->
-<section id="contact" class="py-5">
-  <div class="container text-center my-3 py-3">
-    <h2 class="section-title fw-bold">Get In Touch</h2>
-    <p class="mb-5" style="font-size: 1.1rem; color: var(--text-secondary);">
-      Let's connect! Whether you want to discuss a project, collaboration, or just say hello — feel free to reach out.
-    </p>
-
-    <!-- Contact Info Cards -->
-    <div class="row g-4 mb-5">
-      <div class="col-md-4">
-        <div class="contact-box h-100">
-          <i class="bi bi-envelope-fill"></i>
-          <h5>Email</h5>
-          <p>sairamakrishna871@gmail.com</p>
-          <a href="mailto:sairamakrishna@example.com">Send Mail</a>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="contact-box h-100">
-          <i class="bi bi-geo-alt-fill"></i>
-          <h5>Location</h5>
-          <p>Hyderabad, India</p>
-          <a href="https://maps.google.com/?q=Hyderabad,India" target="_blank">View on Map</a>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="contact-box h-100">
-          <i class="bi bi-telephone-fill"></i>
-          <h5>Phone</h5>
-          <p>+91 6301335826</p>
-          <a href="tel:+916301335826">Call Now</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Contact Form -->
-    <div class="contact-form mx-auto" style="max-width: 600px;">
-      <h4 class="fw-bold mb-4">Send Me a Message</h4>
-<form action="https://formspree.io/f/abcdxyzp" method="POST">
-  
-  <div class="form-floating mb-3">
-    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-    <label>Your Name</label>
-  </div>
-
-  <div class="form-floating mb-3">
-    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-    <label>Your Email</label>
-  </div>
-
-  <div class="form-floating mb-3">
-    <textarea name="message" class="form-control" placeholder="Your Message" style="height: 120px" required></textarea>
-    <label>Your Message</label>
-  </div>
-
-  <button type="submit" class="btn px-4 py-2 rounded-pill">
-    Send Message
-  </button>
-</form>
-
-      <p id="response" class="mt-3 fw-semibold"></p>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Footer ===== -->
-<footer class="text-center">
-  <p class="mb-0 small">© 2026 Sai Ramakrishna. All Rights Reserved.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
 </body>
+
 </html>
